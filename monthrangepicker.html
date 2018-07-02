@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="./daterangepicker.monthpicker.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="./daterangepicker.monthpicker.js"></script>
+</head>
+<body>
+    <div id="s-timeRange" class="pull-right s-timeRange">
+        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+        <span class="s-timePicker"></span> <b class="caret"></b>
+    </div>
+<script>
+$(function() {
+    var timeRangeDom = $('#s-timeRange'),
+        timePickerDom = $('.s-timePicker');
+    datePickers(
+            moment().subtract(1, 'month').startOf('month'),
+            moment().subtract(1, 'month').endOf('month'),
+            timePickerDom, 
+            timeRangeDom, 
+            'YYYY-MM', 
+            true,
+            {
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                'Last Three Months':[moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                'Last Year':[moment().subtract(12, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            true,
+            true
+        );
+});
+</script>
+</body>
+</html>
